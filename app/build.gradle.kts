@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,6 +50,12 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
     implementation(libs.converter.gson)
+    implementation(libs.livedata)
+    implementation(libs.viewmodel)
+    implementation(libs.lifecycle.livedata)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.extensions)
+    implementation(libs.androidx.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

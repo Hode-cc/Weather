@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.Weather" parent="Base.Theme.Weather" />
+
 </resources>
