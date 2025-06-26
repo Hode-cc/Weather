@@ -7,6 +7,7 @@ import com.example.weather.logic.Repository
 import com.example.weather.logic.model.Place
 
 class PlaceViewModel : ViewModel() {
+
     private val searchLiveData = MutableLiveData<String>()
 
     val placeList = ArrayList<Place>()
@@ -18,4 +19,10 @@ class PlaceViewModel : ViewModel() {
     fun searchPlaces(query: String) {
         searchLiveData.value = query
     }
+
+    fun savePlace(place: Place) = Repository.savePlaces(place)
+
+    fun getSavedPlace() = Repository.getSavedPlaces()
+
+    fun isPlaceSaved() = Repository.isPlaceSaved()
 }

@@ -1,5 +1,6 @@
 package com.example.weather.ui.place
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,21 @@ class PlaceFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this)[PlaceViewModel::class.java] }
 
     private lateinit var adapter: PlaceAdapter
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (viewModel.isPlaceSaved()) {
+            val place = viewModel.getSavedPlace()
+            val intent = Intent(context, WeatherActivity::class.java).apply {
+                putExtra("location_lng", place.location.lng)
+                putExtra("location_lat", place.location.lat)
+                putExtra("place_name", place.name)
+            }
+            startActivity(intent)
+            activity?.finish()
+            return
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
